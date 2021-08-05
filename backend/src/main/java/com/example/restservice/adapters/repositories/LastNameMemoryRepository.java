@@ -54,7 +54,7 @@ public class LastNameMemoryRepository implements LastNameRepository {
     public CompletableFuture<LastName> insert(LastName value) {
         return CompletableFuture.supplyAsync(() -> {
             if (containsName(this.lastNames, value.getLastName())) {
-                throw null;
+                return null;
             } else {
                 this.lastNames.add(value);
                 value.setId(autoIncrement.incrementAndGet());
