@@ -1,15 +1,21 @@
 <h1 class="title">Lastnames</h1>
 <hr/>
 
-<form [formGroup]="insertForm" (ngSubmit)="onSubmitForm()" class="form-inline">
+<form [formGroup]="form" (ngSubmit)="onSubmitForm()" class="form-inline">
     <div class="row mb-3">
         <label for="lastName" class="col-sm-2 col-form-label">Last Name</label>
         <div class="col-sm-10">
             <input type="text" class="form-control" id="lastName" formControlName="lastName" placeholder="PEPE"/>
+            <div class="error" *ngIf="form.get('lastName')?.hasError('required') && form.get('lastName')?.touched">
+              Field Required
+            </div>
+            <div class="error" *ngIf="form.get('lastName')?.hasError('maxlength') && form.get('lastName')?.touched">
+              Max. size 50 characters
+            </div>
         </div>
     </div>
 
-    <button type="submit" class="btn btn-primary mb-2">Create</button>
+    <button type="submit" class="btn btn-primary mb-2" [disabled]="form.invalid">Create</button>
     <button type="reset" class="btn">Cancel</button>
 </form>
 

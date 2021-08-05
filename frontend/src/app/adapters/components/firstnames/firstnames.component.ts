@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { FirstName } from '../domain/firstname';
-import { FirstNameService } from '../services/firstname.service';
+import { FirstName } from '../../../domain/firstname';
+import { FirstNameService } from '../../../services/firstname.service';
 
 @Component({
   selector: 'app-firstnames',
@@ -13,7 +13,7 @@ export class FirstnamesComponent implements OnInit {
   public list: Observable<FirstName[]> | undefined;
 
   public insertForm = new FormGroup({
-    firstName: new FormControl(),
+    firstName: new FormControl('', [Validators.required, Validators.maxLength(50)]),
   });
 
   constructor(private firstNameservice: FirstNameService) {}
@@ -28,7 +28,7 @@ export class FirstnamesComponent implements OnInit {
     console.log('Submiting');
     this.firstNameservice.insert(this.insertForm.value).subscribe(() => {
       this.list = this.firstNameservice.getlist();
-    });
+    }, (error) => { alert('Insert Error!')});
   }
 
   public onDeleteRowPressed(index: number) {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { FullName } from '../domain/fullname';
-import { FullNameService } from '../services/fullname.service';
+import { FullName } from 'src/app/domain/fullname';
+import { FullNameService } from 'src/app/services/fullname.service';
 
 @Component({
   selector: 'app-home',

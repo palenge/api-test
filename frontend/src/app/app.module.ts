@@ -1,19 +1,19 @@
 import { HttpClientModule } from '@angular/common/http';
 import { forwardRef, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FullNameWebGateway } from './adapters/fullname.web.gateway';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FullNameGateway } from './domain/gateways/fullname.gateway';
-import { HomeComponent } from './home/home.component';
-import { FirstnamesComponent } from './firstnames/firstnames.component';
+import { FirstnamesComponent } from './adapters/components/firstnames/firstnames.component';
 import { FirstNameGateway } from './domain/gateways/firstname.gateway';
-import { FirstNameWebGateway } from './adapters/firstname.web.gateway';
+import { FirstNameWebGateway } from './adapters/gateways/firstname.web.gateway';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LastNameGateway } from './domain/gateways/lastname.gateway';
-import { LastNameWebGateway } from './adapters/lastname.web.gateway';
-import { LastnamesComponent } from './lastnames/lastnames.component';
+import { HomeComponent } from './adapters/components/home/home.component';
+import { LastnamesComponent } from './adapters/components/lastnames/lastnames.component';
+import { FullNameWebGateway } from './adapters/gateways/fullname.web.gateway';
+import { LastNameWebGateway } from './adapters/gateways/lastname.web.gateway';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, FirstnamesComponent, LastnamesComponent],

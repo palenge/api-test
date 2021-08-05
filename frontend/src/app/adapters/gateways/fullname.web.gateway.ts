@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { FullName } from '../domain/fullname';
-import { FullNameGateway } from '../domain/gateways/fullname.gateway';
+import { FullNameGateway } from 'src/app/domain/gateways/fullname.gateway';
+import { FullName } from 'src/app/domain/fullname';
 
 @Injectable()
 export abstract class FullNameWebGateway implements FullNameGateway {

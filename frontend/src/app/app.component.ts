@@ -7,13 +7,10 @@ import { FullNameService } from './services/fullname.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'frontend';
 
-  constructor(private fullNameservice: FullNameService) {}
+  constructor() {}
 
   ngOnInit(): void {
-    this.fullNameservice.getLast().subscribe((response) => {
-      console.log(JSON.stringify(response));
-    });
+
   }
 }

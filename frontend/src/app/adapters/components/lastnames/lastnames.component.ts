@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { LastName } from '../domain/lastname';
-import { LastNameService } from '../services/lastname.service';
+import { LastName } from 'src/app/domain/lastname';
+import { LastNameService } from 'src/app/services/lastname.service';
 
 @Component({
   selector: 'app-lastnames',
@@ -12,8 +12,8 @@ import { LastNameService } from '../services/lastname.service';
 export class LastnamesComponent implements OnInit {
   public list: Observable<LastName[]> | undefined;
 
-  public insertForm = new FormGroup({
-    lastName: new FormControl(),
+  public form = new FormGroup({
+    lastName: new FormControl('', [Validators.required, Validators.maxLength(50)])
   });
 
   constructor(private lastNameservice: LastNameService) {}
@@ -26,7 +26,7 @@ export class LastnamesComponent implements OnInit {
 
   public onSubmitForm() {
     console.log('Submiting');
-    this.lastNameservice.insert(this.insertForm.value).subscribe(() => {
+    this.lastNameservice.insert(this.form.value).subscribe(() => {
       this.list = this.lastNameservice.getlist();
     });
   }

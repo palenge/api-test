@@ -7,17 +7,17 @@ import { FirstNameGateway } from '../domain/gateways/firstname.gateway';
   providedIn: 'root',
 })
 export class FirstNameService {
-  constructor(private firstNameGateway: FirstNameGateway) {}
+  constructor(private firstNameGateway: FirstNameGateway) { }
 
-  public  getlist(): Observable<FirstName[]> {
+  public getlist(): Observable<FirstName[]> {
     return this.firstNameGateway.getlist();
   }
 
-  public  insert(firstName: FirstName): Observable<FirstName> {
+  public insert(firstName: FirstName): Observable<FirstName> {
     return this.firstNameGateway.insert(firstName);
   }
 
-  public  delete(id: number): Observable<FirstName> {
+  public delete(id: number): Observable<FirstName> {
     return this.firstNameGateway.delete(id);
   }
 }
